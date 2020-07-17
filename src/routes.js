@@ -2,6 +2,7 @@ const { Router } = require('express');
 const routes = Router();
 const ProgrammerController = require('./controllers/ProgrammerController');
 const SearchController = require('./controllers/SearchController');
+const UserController = require('./controllers/UserController');
 
 //Methods HTTP: GET, POST, PUT, DELETE
 
@@ -15,6 +16,10 @@ const SearchController = require('./controllers/SearchController');
 
 routes.get('/programmers', ProgrammerController.index);
 routes.post('/programmers', ProgrammerController.store);
+
+routes.get('/users', UserController.index);
+routes.post('/users', UserController.store);
+routes.post('/login', UserController.findByNameAndPassword);
 
 routes.get('/search', SearchController.index)
 
