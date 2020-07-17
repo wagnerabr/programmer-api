@@ -27,6 +27,7 @@ module.exports = {
 
     async findByNameAndPassword(request, response) {
         const { user_name, user_password } = request.body;
+
         const userConverter = row => ({
             id: row._id,
             name: row.user_name
@@ -35,11 +36,10 @@ module.exports = {
         let user = await User.findOne({ user_name, user_password });
 
         if(!user) { 
-            response.json(`Erro ao buscar o usuário ${user_name}!`);
+            response.status(400).json(`Erro ao buscar o usuário!`);
+        } else {
+            return response.json(userConverter(user));
         }
-           
-        return response.json(userConverter(user));
-
     },
 
     async store(request, response) {
