@@ -10,10 +10,10 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true
 });
 
-// mongoose.connect('mongodb+srv://wagner:BEbu0819!@cluster0.3blzh.mongodb.net/dev?retryWrites=true&w=majority', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// });
+mongoose.connect('mongodb+srv://wagner:BEbu0819!@cluster0.3blzh.mongodb.net/dev?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 app.use(cors())
 //Aplicação entende o corpo do tipo JSON

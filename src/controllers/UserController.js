@@ -6,7 +6,23 @@ module.exports = {
     //index, show, store, update, destroy
     async index(request, response) {
         const users = await User.find();
-        return response.json(users);
+        // const userConverter = row => (
+        //     row.map(user => {
+        //         {
+        //             id: user._id,
+        //             name: user.user_name
+        //         }
+        //     })
+        //     );
+
+        const retornoMap = users.map(user => {
+            return {
+                        id: user._id,
+                        name: user.user_name
+                    };
+        })
+
+        return response.json(retornoMap);
     },
 
     async findByNameAndPassword(request, response) {
